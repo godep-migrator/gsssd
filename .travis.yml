@@ -1,0 +1,6 @@
+language: go
+go:
+  - 1.2
+install:
+  - go get github.com/cactus/go-statsd-client
+  - go get github.com/ossareh/libgosysstat
