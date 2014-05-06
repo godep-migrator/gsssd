@@ -97,10 +97,10 @@ func TestStatPrep(t *testing.T) {
 }
 
 func TestPrepareCpuValues(t *testing.T) {
-	expected_user := int64(51)
-	expected_sys := int64(1)
-	expected_idle := int64(49)
-	expected_io := int64(3)
+	expected_user := uint64(51)
+	expected_sys := uint64(1)
+	expected_idle := uint64(49)
+	expected_io := uint64(3)
 	known := []uint64{1, 50, 1, 49, 3}
 	user, sys, idle, io := prepareCpuValues(known)
 

@@ -10,18 +10,18 @@ import (
 
 type GaugeData struct {
 	prefix string
-	value  int64
+	value  uint64
 }
 
 type CpuClient struct {
 	client statsd.Statter
 }
 
-func prepareCpuValues(values []uint64) (user, sys, idle, io int64) {
-	user = int64(values[0] + values[1])
-	sys = int64(values[2])
-	idle = int64(values[3])
-	io = int64(values[4])
+func prepareCpuValues(values []uint64) (user, sys, idle, io uint64) {
+	user = values[0] + values[1]
+	sys = values[2]
+	idle = values[3]
+	io = values[4]
 	return
 }
 
@@ -37,15 +37,15 @@ func (c *CpuClient) prep(stats []core.Stat) []GaugeData {
 			vals = append(vals, GaugeData{"cpu.total.idle", idle})
 			vals = append(vals, GaugeData{"cpu.total.io", io})
 		case cpu.INTR:
-			vals = append(vals, GaugeData{"cpu.interrupts", int64(values[0])})
+			vals = append(vals, GaugeData{"cpu.interrupts", values[0]})
 		case cpu.CTXT:
-			vals = append(vals, GaugeData{"cpu.context_switches", int64(values[0])})
+			vals = append(vals, GaugeData{"cpu.context_switches", values[0]})
 		case cpu.PROCS:
-			vals = append(vals, GaugeData{"cpu.processes.created", int64(values[0])})
+			vals = append(vals, GaugeData{"cpu.processes.created", values[0]})
 		case cpu.PROCS_RUNNING:
-			vals = append(vals, GaugeData{"cpu.processes.running", int64(values[0])})
+			vals = append(vals, GaugeData{"cpu.processes.running", values[0]})
 		case cpu.PROCS_BLOCKED:
-			vals = append(vals, GaugeData{"cpu.processes.blocked", int64(values[0])})
+			vals = append(vals, GaugeData{"cpu.processes.blocked", values[0]})
 		default:
 			// CPU
 			user, sys, idle, io := prepareCpuValues(values)
@@ -62,18 +62,10 @@ func (c *CpuClient) prep(stats []core.Stat) []GaugeData {
 func (c *CpuClient) Send(stats []core.Stat) {
 	values := c.prep(stats)
 	for _, data := range values {
-		c.client.Gauge(data.prefix, data.value, 1.0)
+		c.client.Gauge(data.prefix, int64(data.value), 1.0)
 	}
 }
 
-func (c *CpuClient) Close() {
-	c.client.Close()
-}
-
-func New(address, prefix string) (*CpuClient, error) {
-	client, err := statsd.New(address, prefix)
-	if err != nil {
-		return nil, err
-	}
-	return &CpuClient{client}, nil
+func New(client statsd.Statter) *CpuClient {
+	return &CpuClient{client}
 }
