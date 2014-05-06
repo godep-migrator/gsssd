@@ -17,7 +17,7 @@ type MemClient struct {
 func (c *MemClient) prep(stats []core.Stat) []GaugeData {
 	vals := []GaugeData{}
 	for _, s := range stats {
-		value := s.Values()[0]
+		value := s.Values()[0] * 1024
 		switch s.Type() {
 		case "total":
 			vals = append(vals, GaugeData{"mem.main.total", value})

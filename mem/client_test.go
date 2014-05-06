@@ -26,11 +26,11 @@ func TestStatPrepWithSwap(t *testing.T) {
 	noop, _ := statsd.NewNoop("123.123.123.123", "test.prefix")
 	client := &MemClient{noop}
 	expected := []GaugeData{
-		GaugeData{"mem.main.total", 24684396},
-		GaugeData{"mem.main.used", 3867420},
-		GaugeData{"mem.main.cached", 651036},
-		GaugeData{"mem.swap.total", 1000},
-		GaugeData{"mem.swap.used", 500},
+		GaugeData{"mem.main.total", (24684396 * 1024)},
+		GaugeData{"mem.main.used", (3867420 * 1024)},
+		GaugeData{"mem.main.cached", (651036 * 1024)},
+		GaugeData{"mem.swap.total", (1000 * 1024)},
+		GaugeData{"mem.swap.used", (500 * 1024)},
 	}
 
 	results := client.prep([]core.Stat{
@@ -54,9 +54,9 @@ func TestStatPrepNoSwap(t *testing.T) {
 	noop, _ := statsd.NewNoop("123.123.123.123", "test.prefix")
 	client := &MemClient{noop}
 	expected := []GaugeData{
-		GaugeData{"mem.main.total", 24684396},
-		GaugeData{"mem.main.used", 3867420},
-		GaugeData{"mem.main.cached", 651036},
+		GaugeData{"mem.main.total", (24684396 * 1024)},
+		GaugeData{"mem.main.used", (3867420 * 1024)},
+		GaugeData{"mem.main.cached", (651036 * 1024)},
 	}
 
 	results := client.prep([]core.Stat{
