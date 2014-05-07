@@ -1,0 +1,8 @@
+Package: gsssd
+Version: 1.0.0
+Architecture: amd64
+Section: admin
+Maintainer: Twitch Data Science <datascience@twitch.tv>
+Homepage: https://github.com/ossareh/gsssd
+Description: reads data from /proc and sends it to statsd
+Priority: standard
