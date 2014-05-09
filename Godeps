@@ -1,0 +1,21 @@
+{
+	"ImportPath": "github.com/ossareh/gsssd",
+	"GoVersion": "go1.2",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/cactus/go-statsd-client/statsd",
+			"Rev": "3999011ef0451eb805b0fa31f98cfb9261bd71be"
+		},
+		{
+			"ImportPath": "github.com/ossareh/libgosysstat/core",
+			"Rev": "0e02a842e5253af12ce1906b1d82003a22e60c0b"
+		},
+		{
+			"ImportPath": "github.com/ossareh/libgosysstat/processor",
+			"Rev": "0e02a842e5253af12ce1906b1d82003a22e60c0b"
+		}
+	]
+}

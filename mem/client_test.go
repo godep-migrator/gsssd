@@ -44,7 +44,7 @@ func TestStatPrepWithSwap(t *testing.T) {
 	if !reflect.DeepEqual(expected, results) {
 		for idx, e := range expected {
 			if !reflect.DeepEqual(e, results[idx]) {
-				log.Fatalf("Expected item %d to be %s, got %s", idx, e, results[idx])
+				log.Fatalf("Expected item %d to be %v, got %v", idx, e, results[idx])
 			}
 		}
 	}
@@ -69,7 +69,7 @@ func TestStatPrepNoSwap(t *testing.T) {
 	if !reflect.DeepEqual(expected, results) {
 		for idx, e := range expected {
 			if !reflect.DeepEqual(e, results[idx]) {
-				log.Fatalf("Expected item %d to be %s, got %s", idx, e, results[idx])
+				log.Fatalf("Expected item %d to be %v, got %v", idx, e, results[idx])
 			}
 		}
 	}
