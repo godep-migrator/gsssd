@@ -49,7 +49,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer procStat.Close()
-	cpuStatProcessor := cpuProcessor.NewProcessor(procStat)
+	cpuStatProcessor := cpuProcessor.New(procStat)
 	cpuStatResults := make(chan []core.Stat)
 	go core.StatProcessor(cpuStatProcessor, TICK_INTERVAL, cpuStatResults)
 
@@ -62,7 +62,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer memStat.Close()
-	memStatProcessor := memProcessor.NewProcessor(memStat)
+	memStatProcessor := memProcessor.New(memStat)
 	memStatResults := make(chan []core.Stat)
 	go core.StatProcessor(memStatProcessor, TICK_INTERVAL, memStatResults)
 

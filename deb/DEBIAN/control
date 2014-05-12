@@ -1,5 +1,5 @@
 Package: gsssd
-Version: 1.0.1
+Version: 1.0.2
 Architecture: amd64
 Section: admin
 Maintainer: Twitch Data Science <datascience@twitch.tv>

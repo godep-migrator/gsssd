@@ -11,11 +11,11 @@
 		},
 		{
 			"ImportPath": "github.com/ossareh/libgosysstat/core",
-			"Rev": "0e02a842e5253af12ce1906b1d82003a22e60c0b"
+			"Rev": "be5298f106d2983e95fcd120d0296ad2d9a87bab"
 		},
 		{
 			"ImportPath": "github.com/ossareh/libgosysstat/processor",
-			"Rev": "0e02a842e5253af12ce1906b1d82003a22e60c0b"
+			"Rev": "be5298f106d2983e95fcd120d0296ad2d9a87bab"
 		}
 	]
 }
