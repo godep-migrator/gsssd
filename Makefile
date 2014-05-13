@@ -1,11 +1,12 @@
 build::
-	go get -d -v ./...
-	go build -v ./...
-	go test -v ./...
+	go get github.com/tools/godep
+	godep get
+	godep go build -v ./...
+	godep go test -v ./...
 
 .PHONY:
 gsssd: build
-	go build -o gsssd
+	godep go build -o gsssd
 
 .PHONY: prep
 prep: gsssd
